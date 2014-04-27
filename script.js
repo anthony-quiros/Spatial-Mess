@@ -173,7 +173,7 @@ Bonus4G = function (x,y,width,height,direction) {
     this.__proto__     = new Sprite(x,y,width,height, direction);
     this._collision    = false;
     this._direction    = direction;
-    this._typeOfBonus  = 
+    this._typeOfBonus  = 'Bonus4G'
     this.getCollision  = function (){return this._collision;};
     this.getTypeOfBonus      = function () {return this._typeOfBonus;};
     this.setCollision  = function(value){this._collision= value;};
@@ -198,7 +198,9 @@ BonusShip = function (x,y,width,height,direction) {
     this.__proto__     = new Sprite(x,y,width,height, direction);
     this._collision    = false;
     this._direction    = direction;
+    this._typeOfBonus  = 'BonusShip'
     this.getCollision  = function (){return this._collision;};
+     this.getTypeOfBonus      = function () {return this._typeOfBonus;};
     this.setCollision  = function(value){this._collision= value;};
     this.moveUp        = function() { if(this._y > 0) { this._y -= 3; }};
     this.moveDown      = function() { if( this._y < canvas.height ) { this._y += 3; } };
@@ -334,7 +336,7 @@ function showAllBonus() {
     for (var i = 0; i < allBonus.length; i++)  {
         //console.debug("Ajout d'un vaisseau de type : " + allShip[i].getTypeOfShip());
         //console.debug(allShip[i])
-        if( BonusShip === allBonus[i].getTypeOfShip()){
+        if( 'BonusShip'== allBonus[i].getTypeOfBonus() ){
             canvasContexte.drawImage(imgPlayer, allBonus[i].getX(), allBonus[i].getY(), allBonus[i].getHeight(),allBonus[i].getWidth()); 
         }
         else{
