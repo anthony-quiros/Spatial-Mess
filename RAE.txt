@@ -1,0 +1,7 @@
+Liste des tâches restantes : 
+ - Gestion des tirs (Faire avancer les tirs, gestion des différentes largeurs)
+ - Gestion des collisions (Sélectionner l'agorithme) //Gestion des collisions OK!
+ - Ajouter les protections (Comme pour le vrai space-Invaders) Peut être pas nécessaire
+ - Ajouter les musiques //RAF
+
+ Objectif du Mecredi 26 février 2014, faire tirer les énemi
