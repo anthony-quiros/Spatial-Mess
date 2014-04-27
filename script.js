@@ -240,7 +240,8 @@ chargeBonusFirePicture = function () {
 imgBonusFire = new Image();   // Crée un nouvel objet Image
 imgBonusFire.src = urlBonusFire; // Définit le chemin vers sa source
 imgBonusFire.onload = function(){
-    createAllShip();
+    createAllBadShip();
+    createPlayerOnCanvas();
     gameStart = true;
     };
 
@@ -255,13 +256,12 @@ function initGame() {
 }
 
 //Création du joueur
-function createPlayer() {
+function createPlayerOnCanvas() {
 player     = new createPlayer (1,canvas.height-30,25,25);
 
 }
 //Fonction utilisée à l'initalisation pour créer l'ensemble des vaisseaux
-function createAllShip() {
-    player     = new createPlayer (1,canvas.height-30,25,25);
+function createAllBadShip() {
     allShip.push(new createEnemy (5,5,25,25));
     allShip.push(new createEnemy (5,35,25,25));
     allShip.push(new createEnemy (5,65,25,25));
@@ -347,6 +347,7 @@ function showAllBonus() {
 };
 //Fonction qui va afficher l'ensemble du jeu
 function showAll() {
+    if(gameStart){
     clearCanvas();
     var randomInteger = getRandomInt(1,allShip.length -1);
 
@@ -360,17 +361,10 @@ function showAll() {
     removeAllUselesObject();
     document.getElementById("nbShip").innerHTML = nbShip;
     document.getElementById("score").innerHTML = score;
-    if(player== null && gameStart){
-        nbDead++;
-        document.getElementById("nbShip").innerHTML = nbShip;
-        niveau = 0;
-        allShip = new Array();
-        createAllShip();
-    }
     if(allShip.length == 0){
         niveau +=.5;
         allShip.pop();
-        createAllShip();
+        createAllBadShip();
     }
         if(allShip[randomInteger]){
     allShip[randomInteger].actionFire();}
@@ -378,6 +372,7 @@ function showAll() {
     showPlayer();
     showAllShip();
     showAllBonus();
+}
     requestAnimationFrame(showAll);
 }
 
