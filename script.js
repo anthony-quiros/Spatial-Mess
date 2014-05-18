@@ -354,7 +354,7 @@ function showAllBonus() {
 function showAll() {
     if(gameStart){
     clearCanvas();
-    var randomInteger = getRandomInt(1,allShip.length -1);
+    var randomInteger = getRandomInt(0,allShip.length -1);
 
 
      //Pour la gestion des mouvements
