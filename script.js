@@ -93,11 +93,17 @@ Ship = function (xShip, yShip, widthShip, heightShip, speedShip, picureShip) {
     this.moveRight  = function (){
             if(this._x<canvasWidth - this._width) {
                 this._x += this._speedShip + niveau;
+				if( allShip.length < 10 ) {
+					this._x += 10 - allShip.length;
+				}
             }
         };
         this.moveLeft   = function () {
             if(this._x>=0) {
-                this._x -= (this._speedShip +niveau);
+                this._x -= this._speedShip + niveau ;
+				if( allShip.length < 10 ) {
+					this._x -= 10 - allShip.length;
+				}
             }
         };
 
@@ -118,6 +124,17 @@ Ship = function (xShip, yShip, widthShip, heightShip, speedShip, picureShip) {
     }
         
     };
+	
+	this.moveRight  = function (){
+		if(this._x<canvasWidth - this._width) {
+			this._x += this._speedShip;
+		}
+	};
+	this.moveLeft   = function () {
+		if(this._x>=0) {
+			this._x -= this._speedShip;
+		}
+	};
  };
 
 
@@ -217,7 +234,7 @@ BonusShip = function (x,y,width,height,direction) {
 *Les fonctions qui permettent de créer les badShip, le joueur, les coups de feu
 *
 **/
-createPlayer  = function (x,y,h,w){return new Player(x,y,h,w,2, imgPlayer);};
+createPlayer  = function (x,y,h,w){return new Player(x,y,h,w,5, imgPlayer);};
 createEnemy   = function (x,y,h,w){return new BadShip(x,y,h,w,1, imgEnemy);};
 createFire    = function (x,y,width, direction){ return new Fire(x,y,width,7, direction);};
 createBonus4G = function (x,y,width, direction){ return new Bonus4G(x,y,width,7, direction);};
